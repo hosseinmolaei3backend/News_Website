@@ -1,0 +1,26 @@
+﻿@model IEnumerable<DataLayer.Models.Page>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<!-- last news -->
+<section class="last-news-section border-radius margin-top-60">
+    <header><i class="icons icon-doc-2"></i>  <h3>تعداد "@Model.Count()" شامل "@ViewBag.Name" یافت شد</h3> </header>
+    <ul>
+        @foreach (var item in Model )
+        {
+            <li>
+                <img class="border-radius" src="~/Content/img/thumb.png">
+                <h2> <a href="/News/@item.PageId"> @item.TitlePage </a></h2>
+                <p>
+                    @item.ShortDescription
+                </p>
+                <span class="date-publish"><i class="fa fa-calendar"></i> انتشار : @News.Tools.PersianDateConverter.ToShamsi(item.CreatDateTime) </span>
+                <a href="/News/@item.PageId" class="more-link"><i class="icons icon-more"></i></a>
+            </li>
+        }
+
+    </ul>
+</section>
+<!-- End last news -->

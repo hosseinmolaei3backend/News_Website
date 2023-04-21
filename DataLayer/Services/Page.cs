@@ -89,7 +89,7 @@ namespace DataLayer.Services
 
         public IEnumerable<Page> TopNews(int Take = 4)
         {
-            return db.Pages.OrderByDescending(n=>n.Visit).Take(Take).ToList();
+            return db.Pages.OrderByDescending(n => n.Visit).Take(Take).ToList();
         }
 
         public IEnumerable<Page> PagesInSlider()
@@ -99,12 +99,20 @@ namespace DataLayer.Services
 
         public IEnumerable<Page> LastNews(int take)
         {
-            return db.Pages.OrderByDescending(n=>n.CreatDateTime).Take(take);
+            return db.Pages.OrderByDescending(n => n.CreatDateTime).Take(take);
         }
 
         public IEnumerable<Page> ShowPageByGroupId(int groupid)
         {
             return db.Pages.Where(n => n.GroupId == groupid);
+        }
+
+        public IEnumerable<Page> Search(string search)
+        {
+            return db.Pages.Where(n => n.TitlePage.Contains(search) ||
+            n.ShortDescription.Contains(search) ||
+            n.Tags.Contains(search) || 
+            n.Text.Contains(search)).Distinct();
         }
     }
 }

@@ -8,18 +8,25 @@ using System.Web;
 using System.Web.Mvc;
 using DataLayer.Context;
 using DataLayer.Models;
+using DataLayer.Repository;
+using DataLayer.Services;
 
 namespace News.Areas.Admin.Controllers
 {
     public class PagesController : Controller
     {
         private MyNewsContext db = new MyNewsContext();
-
+        IPage pageRepository;
+        IPageGroup pageGroupRepository;
+        public PagesController()
+        {
+            pageGroupRepository = new PageGroupRepository(db);
+            pageRepository=new PageRepository(db);
+        }
         // GET: Admin/Pages
         public ActionResult Index()
         {
-            var pages = db.Pages.Include(p => p.PageGroup);
-            return View(pages.ToList());
+            return View(pageRepository.GetAllPages());
         }
 
         // GET: Admin/Pages/Details/5
@@ -29,7 +36,7 @@ namespace News.Areas.Admin.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Page page = db.Pages.Find(id);
+            Page page = pageRepository.GetPageById(id.Value);
             if (page == null)
             {
                 return HttpNotFound();
@@ -40,7 +47,7 @@ namespace News.Areas.Admin.Controllers
         // GET: Admin/Pages/Create
         public ActionResult Create()
         {
-            ViewBag.GroupId = new SelectList(db.PageGroups, "GroupId", "GroupTitle");
+            ViewBag.GroupId = new SelectList(pageGroupRepository.GetAllPageGroups(), "GroupId", "GroupTitle");
             return View();
         }
 
@@ -49,16 +56,18 @@ namespace News.Areas.Admin.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "PageId,GroupId,TitlePage,ShortDescription,Text,Visit,SliderShow,CreatDateTime")] Page page)
+        public ActionResult Create([Bind(Include = "PageId,GroupId,TitlePage,ShortDescription,Text,Visit,SliderShow,CreatDateTime,Tags")] Page page)
         {
             if (ModelState.IsValid)
             {
-                db.Pages.Add(page);
-                db.SaveChanges();
+                page.Visit = 0;
+                page.CreatDateTime=DateTime.Now;
+                pageRepository.InsertPage(page);
+                pageRepository.Save();
                 return RedirectToAction("Index");
             }
 
-            ViewBag.GroupId = new SelectList(db.PageGroups, "GroupId", "GroupTitle", page.GroupId);
+            ViewBag.GroupId = new SelectList(pageGroupRepository.GetAllPageGroups(), "GroupId", "GroupTitle", page.GroupId);
             return View(page);
         }
 
@@ -69,12 +78,12 @@ namespace News.Areas.Admin.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Page page = db.Pages.Find(id);
+            Page page = pageRepository.GetPageById(id.Value);
             if (page == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.GroupId = new SelectList(db.PageGroups, "GroupId", "GroupTitle", page.GroupId);
+            ViewBag.GroupId = new SelectList(pageGroupRepository.GetAllPageGroups(), "GroupId", "GroupTitle", page.GroupId);
             return View(page);
         }
 
@@ -83,15 +92,17 @@ namespace News.Areas.Admin.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "PageId,GroupId,TitlePage,ShortDescription,Text,Visit,SliderShow,CreatDateTime")] Page page)
+        public ActionResult Edit([Bind(Include = "PageId,GroupId,TitlePage,ShortDescription,Text,Visit,SliderShow,CreatDateTime,Tags")] Page page)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(page).State = EntityState.Modified;
-                db.SaveChanges();
+                page.Visit = 0;
+                page.CreatDateTime = DateTime.Now;
+                pageRepository.UpdatePage(page);
+                pageRepository.Save();
                 return RedirectToAction("Index");
             }
-            ViewBag.GroupId = new SelectList(db.PageGroups, "GroupId", "GroupTitle", page.GroupId);
+            ViewBag.GroupId = new SelectList(pageGroupRepository.GetAllPageGroups(), "GroupId", "GroupTitle", page.GroupId);
             return View(page);
         }
 
@@ -102,7 +113,7 @@ namespace News.Areas.Admin.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Page page = db.Pages.Find(id);
+            Page page = pageRepository.GetPageById(id.Value);
             if (page == null)
             {
                 return HttpNotFound();
@@ -115,9 +126,9 @@ namespace News.Areas.Admin.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Page page = db.Pages.Find(id);
-            db.Pages.Remove(page);
-            db.SaveChanges();
+            Page page = pageRepository.GetPageById(id);
+            pageRepository.DeletePage(page);
+            pageRepository.Save();
             return RedirectToAction("Index");
         }
 
@@ -125,6 +136,8 @@ namespace News.Areas.Admin.Controllers
         {
             if (disposing)
             {
+                pageRepository.Dispose();
+                pageGroupRepository.Dispose();
                 db.Dispose();
             }
             base.Dispose(disposing);

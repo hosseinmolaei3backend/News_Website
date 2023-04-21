@@ -30,7 +30,7 @@
             @Html.DisplayNameFor(model => model.SliderShow)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.CreatDateTime)
+            تاریخ ایجاد
         </th>
         <th></th>
     </tr>
@@ -56,7 +56,7 @@
             @Html.DisplayFor(modelItem => item.SliderShow)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.CreatDateTime)
+            @News.Tools.PersianDateConverter.ToShamsi(item.CreatDateTime)
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.PageId }) |

@@ -1,7 +1,71 @@
-﻿
+﻿@model DataLayer.Models.Page
+
 @{
     ViewBag.Title = "ShowNews";
 }
 
-<h2>ShowNews</h2>
+<ul class="breadcrumb">
+    <li class="breadcrumb-item"><a href="/">خانه </a></li>
+    <li class="breadcrumb-item"><a href="/Archive">اخبار </a></li>
+    <li class="breadcrumb-item"><a href="#">@Model.PageGroup.GroupTitle  </a></li>
+    <li class="breadcrumb-item active">@Model.TitlePage </li>
+</ul>
 
+
+<section class="single-news border-radius">
+    <header><h2> @Model.TitlePage </h2> <span> <i class="fa fa-calendar"></i>  انتشار : @News.Tools.PersianDateConverter.ToShamsi(Model.CreatDateTime)</span></header>
+    <article>
+        <p>
+            @Model.ShortDescription
+        </p>
+        <div>
+            <img src="~/Content/img/img.jpg" style="max-width:100%; margin: 10px auto;"/>
+        </div>
+        <p>
+            @Model.Text
+        </p>
+    </article>
+</section>
+
+<div class="keywords border-radius">
+    @foreach (var item in Model.Tags.Split(','))
+    {
+        <a href="/Search?q=@item"> @item  </a>
+    }
+</div>
+
+
+<section class="comment-layer">
+    <header> <i class="fa fa-comments"></i><h5> دیدگاه کاربران </h5><span> @Model.PageComments.Count دیدگاه </span> </header>
+    <ul id="commentlist">
+        @Html.Action("ShowComment","News")
+    </ul>
+
+
+    <h6> شما هم دیدگاه خود را ارسال کنید </h6>
+    <form class="comment-form">
+        <div>
+            <input placeholder=" نام و نام خانوادگی" type="text" id="name">
+            <input placeholder=" ایمیل خود را وارد نمایید " type="email" id="email">
+             <input placeholder=" سربرگ نظر  " type="text" id="titr"> 
+        </div>
+        <textarea placeholder=" متن دیدگاه" id="comment"> </textarea>
+        <input value="ثبت دیدگاه ارزشمند شما " type="button" onclick="AddNewComment()">
+    </form>
+</section>
+
+<script>
+    function AddNewComment() {
+        $.ajax({
+            url: "/News/AddComments/" +@Model.PageId,
+            type: "Post",
+            data: { name: $("#name").val(), email: $("#email").val(), titr: $("#titr").val(), comment: $("#comment").val() }
+        }).done(function (result) {
+            $("commentlist").html(result);
+            $("#name").val("");
+            $("#email").val("");
+            $("#titr").val("");
+            $("#comment").val("");
+        });
+    }
+</script>

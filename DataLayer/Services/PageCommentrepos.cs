@@ -8,10 +8,10 @@ using System.Threading.Tasks;
 
 namespace DataLayer.Services
 {
-    public class PageComment : IPageComment
+    public class PageCommentrepos : IPageComment
     {
         private MyNewsContext db;
-        public PageComment(MyNewsContext context)
+        public PageCommentrepos(MyNewsContext context)
         {
             db = context;
         }

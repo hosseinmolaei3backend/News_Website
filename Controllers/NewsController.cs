@@ -1,4 +1,5 @@
 ﻿using DataLayer.Context;
+using DataLayer.Models;
 using DataLayer.Repository;
 using DataLayer.Services;
 using System;
@@ -19,7 +20,7 @@ namespace News.Controllers
         {
             pageGroupRepository = new PageGroupRepository(db);
             pageRepository = new PageRepository(db);
-            pageCommentRepository = new PageComment(db);
+            pageCommentRepository = new PageCommentrepos(db);
         }
         // GET: News
         public ActionResult ShowGroupNews()
@@ -62,14 +63,14 @@ namespace News.Controllers
 
         public ActionResult AddComments(int id, string name, string email, string titr, string comment)
         {
-            DataLayer.Models.PageComment pageComment = new DataLayer.Models.PageComment()
+            PageComment pageComment = new PageComment()
             {
                 DateAddComment = DateTime.Now,
                 PageId = id,
                 Name = name,
                 Email = email,
-                CommentText = comment,
-                CommentTitle = titr
+                CommentTitle = titr,
+                CommentText = comment
             };
             pageCommentRepository.addComment(pageComment);
             return PartialView("ShowComment",pageCommentRepository.GetCommentByPageId(id));
