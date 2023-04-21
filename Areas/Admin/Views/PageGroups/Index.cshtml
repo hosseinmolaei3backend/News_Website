@@ -1,0 +1,84 @@
+﻿@model IEnumerable<DataLayer.Models.PageGroup>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    <a class="btn btn-success" id="btnNewGroup"
+       data-bs-toggle="modal" data-bs-target="#exampleModal">افزودن گروه جدید</a>
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.GroupTitle)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.GroupTitle)
+            </td>
+            <td>
+                <a class=" btn btn-outline-warning" data-bs-toggle="modal" data-bs-target="#exampleModal" onclick="editGroup(@item.GroupId)">ویرایش</a>
+                <a class=" btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#exampleModal" onclick="deleteGroup(@item.GroupId)">حذف</a>
+                <a class=" btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" onclick="detailGroup(@item.GroupId)">اطلاعات</a>
+            </td>
+        </tr>
+    }
+
+</table>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body" id="ModalBody">
+
+            </div>
+        </div>
+    </div>
+</div>
+<!--End Modal -->
+@section scripts
+    {
+    <script>
+        $("#btnNewGroup").click(function () {
+            $.get("/Admin/PageGroups/Create", function (result) {
+                $("#exampleModal").modal();
+                $("#exampleModalLabel").html("افزودن گروه جدید");
+                $("#ModalBody").html(result);
+            });
+        });
+        function editGroup(id) {
+            $.get("/Admin/PageGroups/Edit/" + id, function (result) {
+                $("#exampleModal").modal();
+                $("#exampleModalLabel").html("ویرایش");
+                $("#ModalBody").html(result);
+            });
+        };
+        function deleteGroup(id) {
+            $.get("/Admin/PageGroups/Delete/" + id, function (result) {
+                $("#exampleModal").modal();
+                $("#exampleModalLabel").html("حذف");
+                $("#ModalBody").html(result);
+            });
+        };
+        function detailGroup(id) {
+            $.get("/Admin/PageGroups/Details/" + id, function (result) {
+                $("#exampleModal").modal();
+                $("#exampleModalLabel").html("اطلاعات گروه");
+                $("#ModalBody").html(result);
+            });
+        };
+    </script>
+    }

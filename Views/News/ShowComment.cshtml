@@ -1,0 +1,13 @@
+﻿@model IEnumerable<DataLayer.Models.PageComment>
+
+@foreach (var item in Model)
+{
+    <li>
+        <img src="~/Content/img/thumb.png">
+        <div>
+            <span> @item.Name </span>
+            <span> @News.Tools.PersianDateConverter.ToShamsi(item.DateAddComment) </span>
+        </div>
+        <p>@item.CommentText</p>
+    </li>
+}

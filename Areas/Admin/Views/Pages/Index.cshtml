@@ -1,0 +1,69 @@
+﻿@model IEnumerable<DataLayer.Models.Page>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.PageGroup.GroupTitle)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TitlePage)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ShortDescription)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Text)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Visit)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SliderShow)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CreatDateTime)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.PageGroup.GroupTitle)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TitlePage)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ShortDescription)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Text)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Visit)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SliderShow)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CreatDateTime)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.PageId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.PageId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.PageId })
+        </td>
+    </tr>
+}
+
+</table>
