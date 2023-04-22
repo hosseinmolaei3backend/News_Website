@@ -60,6 +60,10 @@
     <Compile Include="Migrations\202304211620268_x2.designer.cs">
       <DependentUpon>202304211620268_x2.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202304212153178_add_tags.cs" />
+    <Compile Include="Migrations\202304212153178_add_tags.designer.cs">
+      <DependentUpon>202304212153178_add_tags.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Page.cs" />
     <Compile Include="Models\PageComment.cs" />
@@ -69,7 +73,7 @@
     <Compile Include="Repository\IPageComment.cs" />
     <Compile Include="Repository\IPageGroup.cs" />
     <Compile Include="Services\Page.cs" />
-    <Compile Include="Services\PageComment.cs" />
+    <Compile Include="Services\PageCommentrepos.cs" />
     <Compile Include="Services\PageGroup.cs" />
     <Compile Include="ViewModels\ShowGroupViewModel.cs" />
   </ItemGroup>
@@ -84,6 +88,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202304211620268_x2.resx">
       <DependentUpon>202304211620268_x2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202304212153178_add_tags.resx">
+      <DependentUpon>202304212153178_add_tags.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

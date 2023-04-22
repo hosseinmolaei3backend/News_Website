@@ -20,6 +20,7 @@ namespace DataLayer.Repository
         IEnumerable<Page> PagesInSlider();
         IEnumerable<Page> LastNews(int take = 4);
         IEnumerable<Page> ShowPageByGroupId(int groupid);
+        IEnumerable<Page> Search(string search);
 
     }
 }

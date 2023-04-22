@@ -38,6 +38,8 @@ namespace DataLayer.Models
         [Display(Name = "تاریخ ایجاد")]
         [DisplayFormat(DataFormatString = "{0: yyyy/MM/dd")]
         public DateTime CreatDateTime { get; set; }
+        [Display(Name = "کلمات کلیدی")]
+        public string Tags { get; set; }
 
         public virtual List<PageComment> PageComments { get; set; }
         public virtual PageGroup PageGroup { get; set; }

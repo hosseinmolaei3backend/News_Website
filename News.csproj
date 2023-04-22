@@ -131,6 +131,7 @@
     <Compile Include="Areas\Admin\Controllers\PagesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\NewsController.cs" />
+    <Compile Include="Controllers\SearchController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -175,6 +176,17 @@
     <Content Include="Areas\Admin\Views\Pages\Details.cshtml" />
     <Content Include="Areas\Admin\Views\Pages\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\Pages\Index.cshtml" />
+    <Content Include="Content\fonts\fontawesome-webfont.eot" />
+    <Content Include="Content\fonts\fontawesome-webfont.ttf" />
+    <Content Include="Content\fonts\fontawesome-webfont.woff" />
+    <Content Include="Content\fonts\fontawesome-webfont.woff2" />
+    <Content Include="Content\fonts\FontAwesome.otf" />
+    <Content Include="Content\fonts\yekannumbers.eot" />
+    <Content Include="Content\fonts\yekannumbers.ttf" />
+    <Content Include="Content\fonts\yekannumbers.woff" />
+    <Content Include="Content\fonts\yekanweb.eot" />
+    <Content Include="Content\fonts\yekanweb.ttf" />
+    <Content Include="Content\fonts\yekanweb.woff" />
     <None Include="Scripts\jquery-3.6.4-vsdoc.js" />
     <Content Include="Scripts\jquery-3.6.4.js" />
     <Content Include="Scripts\jquery-3.6.4.min.js" />
@@ -190,11 +202,12 @@
     <Content Include="Views\Web.config" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
-    <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Shared\_DefaultLayout.cshtml" />
+    <Content Include="Views\News\ShowNews.cshtml" />
+    <Content Include="Views\Search\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -202,17 +215,6 @@
     <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Content\fonts\fontawesome-webfont.eot" />
-    <Content Include="Content\fonts\fontawesome-webfont.ttf" />
-    <Content Include="Content\fonts\fontawesome-webfont.woff" />
-    <Content Include="Content\fonts\fontawesome-webfont.woff2" />
-    <Content Include="Content\fonts\FontAwesome.otf" />
-    <Content Include="Content\fonts\yekannumbers.eot" />
-    <Content Include="Content\fonts\yekannumbers.ttf" />
-    <Content Include="Content\fonts\yekannumbers.woff" />
-    <Content Include="Content\fonts\yekanweb.eot" />
-    <Content Include="Content\fonts\yekanweb.ttf" />
-    <Content Include="Content\fonts\yekanweb.woff" />
     <None Include="packages.config" />
     <Content Include="Views\News\ShowGroupNews.cshtml" />
     <Content Include="Views\News\ShowGroupNewsInMenu.cshtml" />
@@ -221,7 +223,6 @@
     <Content Include="Views\Home\LastNews.cshtml" />
     <Content Include="Views\News\ArchiveNews.cshtml" />
     <Content Include="Views\News\ShowNewsByGroupId.cshtml" />
-    <Content Include="Views\News\ShowNews.cshtml" />
     <Content Include="Views\News\ShowComment.cshtml" />
     <Content Include="Scripts\jquery-3.6.4.slim.min.map" />
     <Content Include="Scripts\jquery-3.6.4.min.map" />

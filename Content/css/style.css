@@ -41,7 +41,7 @@ h1,h2,h3,h4,h5,h6{  font-size: 14px;  margin: 0;  padding: 0}
 .comment-layer,
 .comment-layer,.comment-layer header span,.comment-layer ul li,
 .comment-layer ul li img,.comment-layer ul li .answer-button,
-.comment-form div input,.comment-form input[type="submit"],
+.comment-form div input,.comment-form input[type="button"],
 .comment-form textarea{border-radius:4px;-moz-border-radius:4px;-webkit-border-radius:4px}
 
 .margin-top-20{
@@ -658,8 +658,8 @@ footer{
 .comment-form div label input{width: 65%; float: right}
 .comment-form div label img { float: left}
 .comment-form textarea{width: 50%;  color: #505050; margin-bottom: 15px; height: 150px; float: left; border:1px solid #ccc; padding: 5px; line-height: 22px}
-.comment-form input[type="submit"]{width: 100%; border:0; padding: 5px; color: #fff; background-color: #0EB501; line-height: 30px}
-.comment-form input[type="submit"]:hover,.comment-form input[type="submit"]:active{background-color: #219A13; cursor: pointer}
+.comment-form input[type="button"]{width: 100%; border:0; padding: 5px; color: #fff; background-color: #0EB501; line-height: 30px}
+.comment-form input[type="button"]:hover,.comment-form input[type="button"]:active{background-color: #219A13; cursor: pointer}
 
 .pagination > .active > a, .pagination > .active > a:focus, .pagination > .active > a:hover, .pagination > .active > span, .pagination > .active > span:focus, .pagination > .active > span:hover{background-color: #FF393A; border-color: #FF393A;}
 .pagination > li > a, .pagination > li > span{color:#2D2927}
