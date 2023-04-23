@@ -1,0 +1,6 @@
+﻿@model IEnumerable<DataLayer.ShowGroupViewModel>
+
+@foreach (var item in Model)
+{
+    <li><a href="/Group/@item.GroupId/@item.GroupTitle">@item.GroupTitle</a></li>
+}

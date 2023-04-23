@@ -93,5 +93,15 @@ namespace DataLayer.Services
                 PageCount = n.Pages.Count()
             });
         }
+
+        public IEnumerable<ShowGroupViewModel> GetShowGroupViewsInFooter(int take = 3)
+        {
+            return db.PageGroups.Select(n => new ShowGroupViewModel()
+            {
+                GroupId = n.GroupId,
+                GroupTitle = n.GroupTitle,
+                PageCount = n.Pages.Count()
+            }).Take(take);
+        }
     }
 }

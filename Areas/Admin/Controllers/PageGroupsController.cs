@@ -13,6 +13,7 @@ using DataLayer.Repository;
 
 namespace News.Areas.Admin.Controllers
 {
+    [Authorize]
     public class PageGroupsController : Controller
     {
         IPageGroup pageGrouprepository;

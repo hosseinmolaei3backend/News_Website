@@ -129,6 +129,7 @@
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
     <Compile Include="Areas\Admin\Controllers\PageGroupsController.cs" />
     <Compile Include="Areas\Admin\Controllers\PagesController.cs" />
+    <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\NewsController.cs" />
     <Compile Include="Controllers\SearchController.cs" />
@@ -139,8 +140,28 @@
     <Compile Include="Tools\PersianDateConverter.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Content\css\bootstrap-rtl.min.css" />
-    <Content Include="Content\css\bootstrap.min.css" />
+    <Content Include="Content\bootstrap-5.2.1-dist\css\bootstrap-grid.css" />
+    <Content Include="Content\bootstrap-5.2.1-dist\css\bootstrap-grid.min.css" />
+    <Content Include="Content\bootstrap-5.2.1-dist\css\bootstrap-grid.rtl.css" />
+    <Content Include="Content\bootstrap-5.2.1-dist\css\bootstrap-grid.rtl.min.css" />
+    <Content Include="Content\bootstrap-5.2.1-dist\css\bootstrap-reboot.css" />
+    <Content Include="Content\bootstrap-5.2.1-dist\css\bootstrap-reboot.min.css" />
+    <Content Include="Content\bootstrap-5.2.1-dist\css\bootstrap-reboot.rtl.css" />
+    <Content Include="Content\bootstrap-5.2.1-dist\css\bootstrap-reboot.rtl.min.css" />
+    <Content Include="Content\bootstrap-5.2.1-dist\css\bootstrap-utilities.css" />
+    <Content Include="Content\bootstrap-5.2.1-dist\css\bootstrap-utilities.min.css" />
+    <Content Include="Content\bootstrap-5.2.1-dist\css\bootstrap-utilities.rtl.css" />
+    <Content Include="Content\bootstrap-5.2.1-dist\css\bootstrap-utilities.rtl.min.css" />
+    <Content Include="Content\bootstrap-5.2.1-dist\css\bootstrap.css" />
+    <Content Include="Content\bootstrap-5.2.1-dist\css\bootstrap.min.css" />
+    <Content Include="Content\bootstrap-5.2.1-dist\css\bootstrap.rtl.css" />
+    <Content Include="Content\bootstrap-5.2.1-dist\css\bootstrap.rtl.min.css" />
+    <Content Include="Content\bootstrap-5.2.1-dist\js\bootstrap.bundle.js" />
+    <Content Include="Content\bootstrap-5.2.1-dist\js\bootstrap.bundle.min.js" />
+    <Content Include="Content\bootstrap-5.2.1-dist\js\bootstrap.esm.js" />
+    <Content Include="Content\bootstrap-5.2.1-dist\js\bootstrap.esm.min.js" />
+    <Content Include="Content\bootstrap-5.2.1-dist\js\bootstrap.js" />
+    <Content Include="Content\bootstrap-5.2.1-dist\js\bootstrap.min.js" />
     <Content Include="Content\css\font-awesome.min.css" />
     <Content Include="Content\css\owl.carousel.css" />
     <Content Include="Content\css\style.css" />
@@ -155,8 +176,8 @@
     <Content Include="Content\img\refresh.png" />
     <Content Include="Content\img\sprite.png" />
     <Content Include="Content\img\thumb.png" />
-    <Content Include="Content\js\bootstrap.min.js" />
     <Content Include="Content\js\jquery.min.js" />
+    <Content Include="Content\js\jquery.validate.min.js" />
     <Content Include="Content\js\modernizr.js" />
     <Content Include="Content\js\owl.carousel.js" />
     <Content Include="Content\js\script.js" />
@@ -187,6 +208,28 @@
     <Content Include="Content\fonts\yekanweb.eot" />
     <Content Include="Content\fonts\yekanweb.ttf" />
     <Content Include="Content\fonts\yekanweb.woff" />
+    <Content Include="Content\bootstrap-5.2.1-dist\css\bootstrap-grid.css.map" />
+    <Content Include="Content\bootstrap-5.2.1-dist\css\bootstrap-grid.min.css.map" />
+    <Content Include="Content\bootstrap-5.2.1-dist\css\bootstrap-grid.rtl.css.map" />
+    <Content Include="Content\bootstrap-5.2.1-dist\css\bootstrap-grid.rtl.min.css.map" />
+    <Content Include="Content\bootstrap-5.2.1-dist\css\bootstrap-reboot.css.map" />
+    <Content Include="Content\bootstrap-5.2.1-dist\css\bootstrap-reboot.min.css.map" />
+    <Content Include="Content\bootstrap-5.2.1-dist\css\bootstrap-reboot.rtl.css.map" />
+    <Content Include="Content\bootstrap-5.2.1-dist\css\bootstrap-reboot.rtl.min.css.map" />
+    <Content Include="Content\bootstrap-5.2.1-dist\css\bootstrap-utilities.css.map" />
+    <Content Include="Content\bootstrap-5.2.1-dist\css\bootstrap-utilities.min.css.map" />
+    <Content Include="Content\bootstrap-5.2.1-dist\css\bootstrap-utilities.rtl.css.map" />
+    <Content Include="Content\bootstrap-5.2.1-dist\css\bootstrap-utilities.rtl.min.css.map" />
+    <Content Include="Content\bootstrap-5.2.1-dist\css\bootstrap.css.map" />
+    <Content Include="Content\bootstrap-5.2.1-dist\css\bootstrap.min.css.map" />
+    <Content Include="Content\bootstrap-5.2.1-dist\css\bootstrap.rtl.css.map" />
+    <Content Include="Content\bootstrap-5.2.1-dist\css\bootstrap.rtl.min.css.map" />
+    <Content Include="Content\bootstrap-5.2.1-dist\js\bootstrap.bundle.js.map" />
+    <Content Include="Content\bootstrap-5.2.1-dist\js\bootstrap.bundle.min.js.map" />
+    <Content Include="Content\bootstrap-5.2.1-dist\js\bootstrap.esm.js.map" />
+    <Content Include="Content\bootstrap-5.2.1-dist\js\bootstrap.esm.min.js.map" />
+    <Content Include="Content\bootstrap-5.2.1-dist\js\bootstrap.js.map" />
+    <Content Include="Content\bootstrap-5.2.1-dist\js\bootstrap.min.js.map" />
     <None Include="Scripts\jquery-3.6.4-vsdoc.js" />
     <Content Include="Scripts\jquery-3.6.4.js" />
     <Content Include="Scripts\jquery-3.6.4.min.js" />
@@ -208,6 +251,9 @@
     <Content Include="Views\Shared\_DefaultLayout.cshtml" />
     <Content Include="Views\News\ShowNews.cshtml" />
     <Content Include="Views\Search\Index.cshtml" />
+    <Content Include="Views\Account\Login.cshtml" />
+    <Content Include="Views\News\ShowGroupNewsInFooters.cshtml" />
+    <Content Include="Views\Home\NotFound.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
