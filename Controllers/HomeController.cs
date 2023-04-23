@@ -47,6 +47,10 @@ namespace News.Controllers
         {
             return PartialView(pageRepository.LastNews());
         }
-
+        [Route("Notfound")]
+        public ActionResult NotFound()
+        {
+            return View();
+        }
     }
 }

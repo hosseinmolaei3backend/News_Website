@@ -60,11 +60,11 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.CreatDateTime)
+            تاریخ ایجاد
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.CreatDateTime)
+            @News.Tools.PersianDateConverter.ToShamsi(Model.CreatDateTime)
         </dd>
 
     </dl>
@@ -73,8 +73,7 @@
         @Html.AntiForgeryToken()
 
         <div class="form-actions no-color">
-            <input type="submit" value="Delete" class="btn btn-default" /> |
-            @Html.ActionLink("Back to List", "Index")
+            <input type="submit" value="حذف" class="btn btn-outline-danger" />
         </div>
     }
 </div>

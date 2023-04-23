@@ -264,8 +264,7 @@ h1,h2,h3,h4,h5,h6{  font-size: 14px;  margin: 0;  padding: 0}
 }
 .news-archive{
   position: absolute;
-  left: -45px;
-  right: 16px;
+  right: 36%;
   width: 170px;
   line-height: 25px;
   padding: 0 10px 5px;

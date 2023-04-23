@@ -4,13 +4,11 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
-
 <p>
-    <a class="btn btn-success" id="btnNewGroup"
+    <a class="btn btn-success mt-3" id="btnNewGroup"
        data-bs-toggle="modal" data-bs-target="#exampleModal">افزودن گروه جدید</a>
 </p>
-<table class="table">
+<table class="table mb-5">
     <tr>
         <th>
             @Html.DisplayNameFor(model => model.GroupTitle)
@@ -81,4 +79,4 @@
             });
         };
     </script>
-    }
+}

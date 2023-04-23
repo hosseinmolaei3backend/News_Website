@@ -4,71 +4,63 @@
     ViewBag.Title = "Details";
 }
 
-<h2>Details</h2>
-
 <div>
-    <h4>Page</h4>
-    <hr />
     <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.PageGroup.GroupTitle)
+        <dt class="text-dark">
+            @Html.DisplayNameFor(model => model.PageGroup.GroupTitle):
         </dt>
 
         <dd>
             @Html.DisplayFor(model => model.PageGroup.GroupTitle)
         </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.TitlePage)
+        <dt class="text-dark">
+            @Html.DisplayNameFor(model => model.TitlePage):
         </dt>
 
         <dd>
             @Html.DisplayFor(model => model.TitlePage)
         </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.ShortDescription)
+        <dt class="text-dark">
+            @Html.DisplayNameFor(model => model.ShortDescription):
         </dt>
 
         <dd>
             @Html.DisplayFor(model => model.ShortDescription)
         </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Text)
+        <dt class="text-dark">
+            @Html.DisplayNameFor(model => model.Text):
         </dt>
 
         <dd>
             @Html.DisplayFor(model => model.Text)
         </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Visit)
+        <dt class="text-dark">
+            @Html.DisplayNameFor(model => model.Visit):
         </dt>
 
         <dd>
             @Html.DisplayFor(model => model.Visit)
         </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.SliderShow)
+        <dt class="text-dark">
+            @Html.DisplayNameFor(model => model.SliderShow):
         </dt>
 
         <dd>
             @Html.DisplayFor(model => model.SliderShow)
         </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.CreatDateTime)
+        <dt class="text-dark">
+            تاریخ ایجاد:
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.CreatDateTime)
+            @News.Tools.PersianDateConverter.ToShamsi(Model.CreatDateTime)
         </dd>
 
     </dl>
 </div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.PageId }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>

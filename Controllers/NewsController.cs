@@ -27,7 +27,10 @@ namespace News.Controllers
         {
             return PartialView(pageGroupRepository.GetShowGroupViews());
         }
-
+        public ActionResult ShowGroupNewsInFooters()
+        {
+            return PartialView(pageGroupRepository.GetShowGroupViewsInFooter());
+        }
         public ActionResult ShowGroupNewsInMenu()
         {
             return PartialView(pageGroupRepository.GetAllPageGroups());
@@ -79,6 +82,5 @@ namespace News.Controllers
         {
             return PartialView(pageCommentRepository.GetCommentByPageId(id));
         }
-    
     }
 }

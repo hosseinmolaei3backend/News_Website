@@ -13,6 +13,7 @@ using DataLayer.Services;
 
 namespace News.Areas.Admin.Controllers
 {
+    [Authorize]
     public class PagesController : Controller
     {
         private MyNewsContext db = new MyNewsContext();
@@ -41,14 +42,14 @@ namespace News.Areas.Admin.Controllers
             {
                 return HttpNotFound();
             }
-            return View(page);
+            return PartialView(page);
         }
 
         // GET: Admin/Pages/Create
         public ActionResult Create()
         {
             ViewBag.GroupId = new SelectList(pageGroupRepository.GetAllPageGroups(), "GroupId", "GroupTitle");
-            return View();
+            return PartialView();
         }
 
         // POST: Admin/Pages/Create
@@ -68,7 +69,7 @@ namespace News.Areas.Admin.Controllers
             }
 
             ViewBag.GroupId = new SelectList(pageGroupRepository.GetAllPageGroups(), "GroupId", "GroupTitle", page.GroupId);
-            return View(page);
+            return PartialView(page);
         }
 
         // GET: Admin/Pages/Edit/5
@@ -84,7 +85,7 @@ namespace News.Areas.Admin.Controllers
                 return HttpNotFound();
             }
             ViewBag.GroupId = new SelectList(pageGroupRepository.GetAllPageGroups(), "GroupId", "GroupTitle", page.GroupId);
-            return View(page);
+            return PartialView(page);
         }
 
         // POST: Admin/Pages/Edit/5
@@ -118,7 +119,7 @@ namespace News.Areas.Admin.Controllers
             {
                 return HttpNotFound();
             }
-            return View(page);
+            return PartialView(page);
         }
 
         // POST: Admin/Pages/Delete/5

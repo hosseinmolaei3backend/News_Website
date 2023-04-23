@@ -4,66 +4,88 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
-
 <p>
-    @Html.ActionLink("Create New", "Create")
-</p>
+    <a class="btn btn-success mt-3" id="btnNewGroup"
+       data-bs-toggle="modal" data-bs-target="#exampleModal">افزودن گروه جدید</a>
+
 <table class="table">
     <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.PageGroup.GroupTitle)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.TitlePage)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ShortDescription)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Text)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Visit)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.SliderShow)
-        </th>
-        <th>
-            تاریخ ایجاد
-        </th>
-        <th></th>
+        <th scope="col"> گروه</th>
+        <th scope="col">سربرگ</th>
+        <th scope="col">توضیحات مختصر</th>
+
+        <th scope="col">تعداد بازدید</th>
+        <th scope="col">اسلایدر</th>
+        <th scope="col">تاریخ ایجاد</th>
+        <th scope="col">امکانات</th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.PageGroup.GroupTitle)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.TitlePage)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ShortDescription)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Text)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Visit)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.SliderShow)
-        </td>
-        <td>
-            @News.Tools.PersianDateConverter.ToShamsi(item.CreatDateTime)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.PageId }) |
-            @Html.ActionLink("Details", "Details", new { id=item.PageId }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.PageId })
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <th scope="row">@item.PageGroup.GroupTitle</th>
+            
+            <td>@item.TitlePage</td>
+            <td>@item.ShortDescription</td>
+            <td>@item.Visit</td>
+            <td>@item.SliderShow</td>
+            <td>@News.Tools.PersianDateConverter.ToShamsi(item.CreatDateTime)</td>
+            <td>
+                <a class=" btn btn-outline-warning" data-bs-toggle="modal" data-bs-target="#exampleModal" onclick="editGroup(@item.PageId)">ویرایش</a>
+                <a class=" btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#exampleModal" onclick="deleteGroup(@item.PageId)">حذف</a>
+                <a class=" btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" onclick="detailGroup(@item.PageId)">اطلاعات</a>
+            </td>
+        </tr>
+    }
 
 </table>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-scrollable">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body" id="ModalBody">
+
+            </div>
+        </div>
+    </div>
+</div>
+<!--End Modal -->
+
+@section scripts
+    {
+    <script>
+        $("#btnNewGroup").click(function () {
+            $.get("/Admin/Pages/Create", function (result) {
+                $("#exampleModal").modal();
+                $("#exampleModalLabel").html("افزودن گروه جدید");
+                $("#ModalBody").html(result);
+            });
+        });
+        function editGroup(id) {
+            $.get("/Admin/Pages/Edit/" + id, function (result) {
+                $("#exampleModal").modal();
+                $("#exampleModalLabel").html("ویرایش");
+                $("#ModalBody").html(result);
+            });
+        };
+        function deleteGroup(id) {
+            $.get("/Admin/Pages/Delete/" + id, function (result) {
+                $("#exampleModal").modal();
+                $("#exampleModalLabel").html("حذف");
+                $("#ModalBody").html(result);
+            });
+        };
+        function detailGroup(id) {
+            $.get("/Admin/Pages/Details/" + id, function (result) {
+                $("#exampleModal").modal();
+                $("#exampleModalLabel").html("اطلاعات گروه");
+                $("#ModalBody").html(result);
+            });
+        };
+    </script>
+}
